@@ -13,6 +13,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish();
-        this.overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+//        this.overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
     }
 }

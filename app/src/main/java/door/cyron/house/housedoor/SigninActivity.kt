@@ -12,6 +12,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.support.v4.app.ActivityCompat
+import android.R.attr.transitionName
+import android.support.v4.app.ActivityOptionsCompat
+
+
 
 
 class SigninActivity : AppCompatActivity() {
@@ -47,9 +52,16 @@ class SigninActivity : AppCompatActivity() {
 
         }
         floatingActionButton.setOnClickListener(){
-            startActivity(Intent(this@SigninActivity,HomeActivity::class.java))
-            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-
+            val intent=(Intent(this@SigninActivity,HomeActivity::class.java))
+//            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+            val options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    floatingActionButton, // Starting view
+                    "demo"    // The String
+                )
+            //Start the Intent
+            ActivityCompat.startActivity(this, intent, options.toBundle())
         }
 
 

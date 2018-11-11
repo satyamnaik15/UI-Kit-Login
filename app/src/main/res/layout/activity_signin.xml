@@ -105,6 +105,7 @@
             android:layout_height="45dp"
             android:clickable="true"
             android:id="@+id/floatingActionButton"
+            android:transitionName="demo"
             app:backgroundTint="@color/colorPrimary"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
