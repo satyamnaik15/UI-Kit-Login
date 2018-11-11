@@ -27,7 +27,7 @@ class SigninActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_signin)
         idTittle = findViewById(R.id.idTittle)
         tvRegister = findViewById(R.id.tvRegister)
         tvForget = findViewById(R.id.tvForget)
