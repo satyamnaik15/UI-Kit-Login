@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.Animator.AnimatorListener
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
@@ -43,6 +44,11 @@ class SigninActivity : AppCompatActivity() {
             if (idTittle.text.equals("Login"))
                 signinGoing() else
                 registerGoing()
+
+        }
+        floatingActionButton.setOnClickListener(){
+            startActivity(Intent(this@SigninActivity,HomeActivity::class.java))
+            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
 
         }
 
