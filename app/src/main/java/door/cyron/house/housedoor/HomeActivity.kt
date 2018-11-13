@@ -10,23 +10,31 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.DecelerateInterpolator
 import android.widget.EditText
 import android.animation.ObjectAnimator
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import door.cyron.house.housedoor.utility.expandablelayout.ExpandableLayout
+import door.cyron.house.housedoor.utility.expandablelayout.ExpandableLayout.State.*
 
 
-
-
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), ExpandableLayout.OnExpansionUpdateListener {
 
     lateinit var floatingActionButton: FloatingActionButton
     lateinit var view: View
-    lateinit var editText: EditText
-
+    lateinit var exp: ExpandableLayout
+    lateinit var exp_one:ExpandableLayout
+    lateinit var btn:Button
+    lateinit var txtClose:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         floatingActionButton = findViewById(R.id.floatingActionButton2)
         view = findViewById(R.id.view)
-        editText = findViewById(R.id.editText)
+        exp=findViewById(R.id.exp)
+        exp_one=findViewById(R.id.exp_one)
+        btn=findViewById(R.id.button)
+        txtClose=findViewById(R.id.txtClose)
 
         val vto = view.viewTreeObserver
         vto.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
@@ -37,6 +45,19 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
+        btn.setOnClickListener(){
+            if(!exp.isExpanded){
+                exp.expand()
+            }
+        }
+        txtClose.setOnClickListener(){
+            if(exp_one.isExpanded){
+                exp_one.collapse()
+            }
+        }
+
+        exp.setOnExpansionUpdateListener(this)
+        exp_one.setOnExpansionUpdateListener(this)
 
     }
 
@@ -69,7 +90,16 @@ class HomeActivity : AppCompatActivity() {
             }
         })
     }
+    override fun onExpansionUpdate(expansionFraction: Float, state: Int) {
 
+        if(state==EXPANDED){
+            if(!exp_one.isExpanded())
+            exp_one.expand()
+        }else if(state== COLLAPSED){
+            if(exp.isExpanded())
+                exp.collapse()
+        }
+    }
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -77,3 +107,4 @@ class HomeActivity : AppCompatActivity() {
 //        this.overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
     }
 }
+
