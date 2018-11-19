@@ -8,11 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.DecelerateInterpolator
-import android.widget.EditText
-import android.animation.ObjectAnimator
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import door.cyron.house.housedoor.utility.expandablelayout.ExpandableLayout
 import door.cyron.house.housedoor.utility.expandablelayout.ExpandableLayout.State.*
 
@@ -29,7 +26,7 @@ class HomeActivity : AppCompatActivity(), ExpandableLayout.OnExpansionUpdateList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        floatingActionButton = findViewById(R.id.floatingActionButton2)
+        floatingActionButton = findViewById(R.id.btnClick)
         view = findViewById(R.id.view)
         exp=findViewById(R.id.exp)
         exp_one=findViewById(R.id.exp_one)
