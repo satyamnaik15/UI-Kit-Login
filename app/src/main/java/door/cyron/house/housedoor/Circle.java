@@ -23,7 +23,7 @@ public class Circle extends View {
 
     public int dotCount = 5;
     private int startX, startY;
-    private int selectedPoint = 1;
+    private int selectedPoint = 0;
     private EachView eachObj;
     private boolean movementDown;
 
@@ -159,6 +159,12 @@ public class Circle extends View {
 
             }
 
+        } else {
+            canvas.drawLine(scrWidth - scrWidth / 7, 0, scrWidth - scrWidth / 7, (scrHeight / dotCount - 20) * dotCount, linePaint);
+
+            for (int j = 1; j <= dotCount; j++) {
+                canvas.drawCircle(scrWidth - scrWidth / 7, (scrHeight / dotCount - 20) * j, 20, circlePaint);
+            }
         }
     }
 

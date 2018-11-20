@@ -85,7 +85,7 @@ class ReviewActivity : AppCompatActivity() {
                     cusView.startY=yMidValue
 
                     var isActiveCircle=false
-                    isActiveCircle = temp==yMidValue
+                    isActiveCircle = (temp==yMidValue)&&(cusView.selectedPoint>1)
                     val each= EachView(cusView.startX,tempEnd,cusView.startX,yMidValue,cusView.startX,cusView.getTopStartY(),isActiveCircle)
                     cusView.setObj(each)
 
