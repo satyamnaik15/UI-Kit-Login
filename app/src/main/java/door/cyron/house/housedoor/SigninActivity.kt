@@ -14,9 +14,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.support.v4.app.ActivityCompat
 import android.R.attr.transitionName
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.ActivityOptionsCompat
-
-
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.ViewAnimationUtils
+import android.widget.RelativeLayout
 
 
 class SigninActivity : AppCompatActivity() {
@@ -47,6 +49,7 @@ class SigninActivity : AppCompatActivity() {
         linearLayout = findViewById(R.id.linearLayout)
         linView = findViewById(R.id.linView)
         floatingActionButton = findViewById(R.id.floatingActionButton)
+
         idTittle.text = "Login"
         tvRegister.text = "Register"
 
@@ -58,7 +61,8 @@ class SigninActivity : AppCompatActivity() {
         }
         signinComing()
 
-//        floatingActionButton.setOnClickListener(){
+        floatingActionButton.setOnClickListener(){
+
 //            val intent=(Intent(this@SigninActivity,HomeActivity::class.java))
 ////            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
 //            val options =
@@ -69,8 +73,9 @@ class SigninActivity : AppCompatActivity() {
 //                )
 //            //Start the Intent
 //            ActivityCompat.startActivity(this, intent, options.toBundle())
-//        }
-//
+
+        }
+
 
     }
 
