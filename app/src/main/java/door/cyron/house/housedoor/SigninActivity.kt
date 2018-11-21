@@ -30,6 +30,11 @@ class SigninActivity : AppCompatActivity() {
     lateinit var linView: LinearLayout
     lateinit var floatingActionButton: FloatingActionButton
 
+    val animDuration:Long =500
+    val animRepeat:Int =0
+    val transValue:Float =1000f
+    val transValueStart:Float =1f
+    val transValueEnd:Float =0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,19 +56,21 @@ class SigninActivity : AppCompatActivity() {
                 registerGoing()
 
         }
-        floatingActionButton.setOnClickListener(){
-            val intent=(Intent(this@SigninActivity,HomeActivity::class.java))
-//            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-            val options =
-                ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    floatingActionButton, // Starting view
-                    "demo"    // The String
-                )
-            //Start the Intent
-            ActivityCompat.startActivity(this, intent, options.toBundle())
-        }
+        signinComing()
 
+//        floatingActionButton.setOnClickListener(){
+//            val intent=(Intent(this@SigninActivity,HomeActivity::class.java))
+////            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+//            val options =
+//                ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                    this,
+//                    floatingActionButton, // Starting view
+//                    "demo"    // The String
+//                )
+//            //Start the Intent
+//            ActivityCompat.startActivity(this, intent, options.toBundle())
+//        }
+//
 
     }
 
@@ -72,18 +79,18 @@ class SigninActivity : AppCompatActivity() {
         etRePassword.visibility = View.GONE
         linView.visibility = View.GONE
 
-        val linearLayoutAnimOut = ObjectAnimator.ofFloat(linearLayout, "translationX", -1000f)
-        linearLayoutAnimOut.repeatCount = 0
-        linearLayoutAnimOut.duration = 500
-        val tvRegAnimOut = ObjectAnimator.ofFloat(tvRegister, "translationX", 1000f)
-        tvRegAnimOut.repeatCount = 0
-        tvRegAnimOut.duration = 500
-        val tvForgetAnimOut = ObjectAnimator.ofFloat(tvForget, "translationX", 1000f)
-        tvForgetAnimOut.repeatCount = 0
-        tvForgetAnimOut.duration = 500
-        val idTitleAnimHide = ObjectAnimator.ofFloat(idTittle, "alpha", 1f, 0f)
-        idTitleAnimHide.repeatCount = 0
-        idTitleAnimHide.duration = 500
+        val linearLayoutAnimOut = ObjectAnimator.ofFloat(linearLayout, "translationX", -transValue)
+        linearLayoutAnimOut.repeatCount = animRepeat
+        linearLayoutAnimOut.duration = animDuration
+        val tvRegAnimOut = ObjectAnimator.ofFloat(tvRegister, "translationX", transValue)
+        tvRegAnimOut.repeatCount = animRepeat
+        tvRegAnimOut.duration = animDuration
+        val tvForgetAnimOut = ObjectAnimator.ofFloat(tvForget, "translationX", transValue)
+        tvForgetAnimOut.repeatCount = animRepeat
+        tvForgetAnimOut.duration = animDuration
+        val idTitleAnimHide = ObjectAnimator.ofFloat(idTittle, "alpha", transValueStart, transValueEnd)
+        idTitleAnimHide.repeatCount = animRepeat
+        idTitleAnimHide.duration = animDuration
         floatingActionButton.hide()
         val set = AnimatorSet()
         set.play(tvRegAnimOut).with(tvForgetAnimOut).with(idTitleAnimHide).with(linearLayoutAnimOut)
@@ -123,15 +130,15 @@ class SigninActivity : AppCompatActivity() {
 //        etEmailExpand.repeatCount = 0
 //        etEmailExpand.duration = 1000
 
-        val linearLayoutAnimIn = ObjectAnimator.ofFloat(linearLayout, "translationX", 0f)
-        linearLayoutAnimIn.repeatCount = 0
-        linearLayoutAnimIn.duration = 500
-        val tvRegAnimIn = ObjectAnimator.ofFloat(tvRegister, "translationX", 0f)
-        tvRegAnimIn.repeatCount = 0
-        tvRegAnimIn.duration = 500
-        val idTitleAnimshow = ObjectAnimator.ofFloat(idTittle, "alpha", 0f, 1f)
-        idTitleAnimshow.repeatCount = 0
-        idTitleAnimshow.duration = 500
+        val linearLayoutAnimIn = ObjectAnimator.ofFloat(linearLayout, "translationX", transValueEnd)
+        linearLayoutAnimIn.repeatCount = animRepeat
+        linearLayoutAnimIn.duration = animDuration
+        val tvRegAnimIn = ObjectAnimator.ofFloat(tvRegister, "translationX", transValueEnd)
+        tvRegAnimIn.repeatCount = animRepeat
+        tvRegAnimIn.duration = animDuration
+        val idTitleAnimshow = ObjectAnimator.ofFloat(idTittle, "alpha", transValueEnd, transValueStart)
+        idTitleAnimshow.repeatCount = animRepeat
+        idTitleAnimshow.duration = animDuration
         val set = AnimatorSet()
         set.play(tvRegAnimIn).with(idTitleAnimshow).with(linearLayoutAnimIn)
         set.start()
@@ -142,19 +149,19 @@ class SigninActivity : AppCompatActivity() {
         etRePassword.visibility = View.VISIBLE
         linView.visibility = View.VISIBLE
 
-        val linearLayoutAnimOut = ObjectAnimator.ofFloat(linearLayout, "translationX", -1000f)
-        linearLayoutAnimOut.repeatCount = 0
-        linearLayoutAnimOut.duration = 500
+        val linearLayoutAnimOut = ObjectAnimator.ofFloat(linearLayout, "translationX", -transValue)
+        linearLayoutAnimOut.repeatCount = animRepeat
+        linearLayoutAnimOut.duration = animDuration
 
-        val tvRegAnimOut = ObjectAnimator.ofFloat(tvRegister, "translationX", 1000f)
-        tvRegAnimOut.repeatCount = 0
-        tvRegAnimOut.duration = 500
-        val tvForgetAnimOut = ObjectAnimator.ofFloat(tvForget, "translationX", 1000f)
-        tvForgetAnimOut.repeatCount = 0
-        tvForgetAnimOut.duration = 500
-        val idTitleAnimHide = ObjectAnimator.ofFloat(idTittle, "alpha", 1f, 0f)
-        idTitleAnimHide.repeatCount = 0
-        idTitleAnimHide.duration = 500
+        val tvRegAnimOut = ObjectAnimator.ofFloat(tvRegister, "translationX", transValue)
+        tvRegAnimOut.repeatCount = animRepeat
+        tvRegAnimOut.duration = animDuration
+        val tvForgetAnimOut = ObjectAnimator.ofFloat(tvForget, "translationX", transValue)
+        tvForgetAnimOut.repeatCount = animRepeat
+        tvForgetAnimOut.duration = animDuration
+        val idTitleAnimHide = ObjectAnimator.ofFloat(idTittle, "alpha", transValueStart, transValueEnd)
+        idTitleAnimHide.repeatCount = animRepeat
+        idTitleAnimHide.duration = animDuration
         floatingActionButton.hide()
         val set = AnimatorSet()
         set.play(tvRegAnimOut).with(tvForgetAnimOut).with(idTitleAnimHide).with(linearLayoutAnimOut)
@@ -189,19 +196,19 @@ class SigninActivity : AppCompatActivity() {
         etRePassword.visibility = View.GONE
         linView.visibility = View.GONE
 
-        val linearLayoutAnimIn = ObjectAnimator.ofFloat(linearLayout, "translationX", 0f)
-        linearLayoutAnimIn.repeatCount = 0
-        linearLayoutAnimIn.duration = 500
+        val linearLayoutAnimIn = ObjectAnimator.ofFloat(linearLayout, "translationX", transValueEnd)
+        linearLayoutAnimIn.repeatCount = animRepeat
+        linearLayoutAnimIn.duration = animDuration
 
-        val tvRegAnimIn = ObjectAnimator.ofFloat(tvRegister, "translationX", 0f)
-        tvRegAnimIn.repeatCount = 0
-        tvRegAnimIn.duration = 500
-        val tvForgetAnimIn = ObjectAnimator.ofFloat(tvForget, "translationX", 0f)
-        tvForgetAnimIn.repeatCount = 0
-        tvForgetAnimIn.duration = 500
-        val idTitleAnimshow = ObjectAnimator.ofFloat(idTittle, "alpha", 0f, 1f)
-        idTitleAnimshow.repeatCount = 0
-        idTitleAnimshow.duration = 500
+        val tvRegAnimIn = ObjectAnimator.ofFloat(tvRegister, "translationX", transValueEnd)
+        tvRegAnimIn.repeatCount = animRepeat
+        tvRegAnimIn.duration = animDuration
+        val tvForgetAnimIn = ObjectAnimator.ofFloat(tvForget, "translationX", transValueEnd)
+        tvForgetAnimIn.repeatCount = animRepeat
+        tvForgetAnimIn.duration = animDuration
+        val idTitleAnimshow = ObjectAnimator.ofFloat(idTittle, "alpha", transValueEnd, transValueStart)
+        idTitleAnimshow.repeatCount = animRepeat
+        idTitleAnimshow.duration = animDuration
         val set = AnimatorSet()
         set.play(tvRegAnimIn).with(tvForgetAnimIn).with(idTitleAnimshow).with(linearLayoutAnimIn)
         set.start()
