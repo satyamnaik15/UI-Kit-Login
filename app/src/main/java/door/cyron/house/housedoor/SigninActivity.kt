@@ -19,6 +19,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.ViewAnimationUtils
 import android.widget.RelativeLayout
+import door.cyron.house.housedoor.R
 
 
 class SigninActivity : AppCompatActivity() {
@@ -63,16 +64,17 @@ class SigninActivity : AppCompatActivity() {
 
         floatingActionButton.setOnClickListener(){
 
-//            val intent=(Intent(this@SigninActivity,HomeActivity::class.java))
-////            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-//            val options =
-//                ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                    this,
-//                    floatingActionButton, // Starting view
-//                    "demo"    // The String
-//                )
-//            //Start the Intent
-//            ActivityCompat.startActivity(this, intent, options.toBundle())
+            val intent=(Intent(this@SigninActivity,HomeActivity::class.java))
+//            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+            val options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    floatingActionButton, // Starting view
+                    "demo"    // The String
+                )
+            //Start the Intent
+            ActivityCompat.startActivity(this, intent, options.toBundle())
+            finish()
 
         }
 
