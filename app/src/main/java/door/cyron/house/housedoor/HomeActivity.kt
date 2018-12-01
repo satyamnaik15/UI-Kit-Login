@@ -2,6 +2,7 @@ package door.cyron.house.housedoor
 
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.transition.Transition
@@ -28,7 +29,10 @@ class HomeActivity : AppCompatActivity() {
         vto.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 viewColor.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                startAnim(viewColor)
+
+                Handler().postDelayed({
+                    startAnim(viewColor)
+                }, 500)
 
             }
         })
@@ -49,9 +53,8 @@ class HomeActivity : AppCompatActivity() {
             // make the view visible and start the animation
             viewColor!!.setVisibility(View.VISIBLE)
             circularReveal.start()
-        } else {
-
         }
+
     }
 
     override fun onBackPressed() {
